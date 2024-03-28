@@ -1,8 +1,10 @@
 import Logo from "./Logo";
-import { Fragment } from 'react'
+import React, { useContext } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, useLocation } from 'react-router-dom'; 
+import NavigationContext from "../routes/NavContext/NavigationContext";
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -15,11 +17,11 @@ const Nav = () => {
 
   const location = useLocation(); 
 
-  const navigation = [
-    { name: 'Home', href: '/', current: location.pathname === '/' },
-    { name: 'Experience', href: '/experience', current: location.pathname === '/experience' },
-    { name: 'Contact Me', href: '/contact', current: location.pathname === '/contact' },
-  ];
+  const navItems = useContext(NavigationContext);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <Disclosure as="nav" className="bg-transparent">
@@ -46,10 +48,10 @@ const Nav = () => {
               </div>
               <div className="hidden sm:ml-6 sm:block md:right-0">
                 <div className="flex space-x-4 ">
-                  {navigation.map((item) => (
+                  {navItems.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
+                      onClick={() => scrollToSection(item.ref)}
                       className={classNames(
                         item.current ? 'bg-slate-100'  : 'text-gray-500', 'bg-red',
                         'rounded-md px-3 py-2 text-sm font-medium text-black'
@@ -67,11 +69,11 @@ const Nav = () => {
 
         <Disclosure.Panel className="sm:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            {navigation.map((item) => (
+            {navItems.map((item) => (
               <Disclosure.Button
                 key={item.name}
                 as="a"
-                href={item.href}
+                onClick={() => scrollToSection(item.ref)}
                 className={classNames(
 
                   item.current ? 'bg-slate-100'  : 'text-gray-500',
