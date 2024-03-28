@@ -22,7 +22,7 @@ module.exports = {
         88: '22rem',
       },
       fontFamily: {
-        'sans' :['"Open Sans"', ...defaultTheme.fontFamily.sans]
+        'sans' :['"Work Sans"', ...defaultTheme.fontFamily.sans]
       },
     },
   },
