@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: ['./src/**/*.{js,jsx}', './public/index.html'],
@@ -19,6 +20,9 @@ module.exports = {
       },
       spacing: {
         88: '22rem',
+      },
+      fontFamily: {
+        'sans' :['"Open Sans"', ...defaultTheme.fontFamily.sans]
       },
     },
   },
