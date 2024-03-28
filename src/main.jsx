@@ -5,17 +5,21 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Home from "./pages/Home"
-import NotFound404 from "./pages/NotFound404";
+import Root from "./routes/Root";
+import ErrorPage from './routes/ErrorPage';
+import Home from './routes/Home';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "*",
-    element: <NotFound404 />,
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
   },
 ]);
 
