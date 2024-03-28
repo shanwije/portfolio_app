@@ -8,6 +8,8 @@ import "./index.css";
 import Root from "./routes/Root";
 import ErrorPage from './routes/ErrorPage';
 import Home from './routes/Home';
+import Experience from './components/ProfExpereince';
+import Contact from './components/Contact';
 
 const router = createBrowserRouter([
   {
@@ -15,10 +17,9 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
+      { index: true, element: <Home /> },
+      { path: "experience", element: <Experience /> },
+      { path: "contact", element: <Contact /> },
     ],
   },
 ]);

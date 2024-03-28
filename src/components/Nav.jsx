@@ -2,13 +2,7 @@ import Logo from "./Logo";
 import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-
-const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Skills', href: '#', current: false },
-  { name: '', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+import { Link, useLocation } from 'react-router-dom'; 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -19,6 +13,13 @@ const Nav = () => {
   const title = 'Shan Wijenayaka';
   const subtitle = 'Product Focused Fullstack Software Engineer'
 
+  const location = useLocation(); 
+
+  const navigation = [
+    { name: 'Home', href: '/', current: location.pathname === '/' },
+    { name: 'Experience', href: '/experience', current: location.pathname === '/experience' },
+    { name: 'Contact Me', href: '/contact', current: location.pathname === '/contact' },
+  ];
 
   return (
     <Disclosure as="nav" className="bg-transparent">
