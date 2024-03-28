@@ -1,8 +1,39 @@
 const Contact = () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const formData = {
+            email: event.target.email.value,
+            subject: event.target.subject.value,
+            message: event.target.message.value,
+        };
+
+        try {
+            const response = await fetch('http://localhost:8000', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+            window.alert('Message sent successfully!');
+        } catch (error) {
+            console.error('Error sending message:', error);
+            window.alert('Failed to send message.');
+        }
+    };
+
     return (
         <div className="mx-auto max-w-screen-md mt-8 p-4 bg-white shadow-lg rounded-lg">
             <h2 className="text-xl font-semibold mb-5">Contact Me</h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Email

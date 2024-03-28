@@ -2,7 +2,7 @@ import {useContext} from "react";
 import ProfExperience from "../components/ProfExperience";
 import Contact from "../components/Contact";
 import NavigationContext from "../context/NavigationContext";
-import HeroSection from "../components/HeroSection"; // Import the new component
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
     const navItems = useContext(NavigationContext);
