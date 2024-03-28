@@ -21,10 +21,12 @@ const Contact = () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
+            //todo: handle response
             const data = await response.json();
             console.log(data);
             window.alert('Message sent successfully!');
         } catch (error) {
+            //todo: handle error
             console.error('Error sending message:', error);
             window.alert('Failed to send message.');
         }

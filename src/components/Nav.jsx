@@ -1,7 +1,6 @@
 import {useContext} from 'react'
 import {Disclosure} from '@headlessui/react'
 import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline'
-import {useLocation} from 'react-router-dom';
 import NavigationContext from "../context/NavigationContext.jsx";
 
 
@@ -12,8 +11,7 @@ function classNames(...classes) {
 const Nav = () => {
 
     const title = 'Shan Wijenayaka';
-    const subtitle = 'Product Focused Fullstack Software Engineer'
-    useLocation();
+    const subtitle = 'Fullstack Software Engineer'
     const navItems = useContext(NavigationContext);
 
     const scrollToSection = (ref) => {
